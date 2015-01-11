@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns="http://www.jboss.org/arquillian-1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+      http://www.jboss.org/arquillian-1.0
+      http://www.jboss.org/schema/arquillian/arquillian-1.0.xsd">
+	<container qualifier="glassfish" default="true">
+		<configuration>
+			<property name="configurationXml">target/classes/config/domain.xml</property>
+			<property name="bindHttpPort">8080</property>
+		</configuration>		
+	</container>
+	<engine>
+		<property name="deploymentExportPath">target</property>
+	</engine>
+</arquillian>

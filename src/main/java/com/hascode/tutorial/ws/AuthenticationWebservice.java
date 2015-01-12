@@ -1,6 +1,8 @@
 package com.hascode.tutorial.ws;
 
 import java.security.Principal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -22,6 +24,8 @@ import com.hascode.tutorial.entity.User;
 @Path("/session")
 @RolesAllowed(value = { "administrators" })
 public class AuthenticationWebservice {
+	private final Logger log = Logger.getLogger(AuthenticationWebservice.class.getName());
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -38,6 +42,7 @@ public class AuthenticationWebservice {
 		Principal principal = ctx.getUserPrincipal();
 
 		User user = em.find(User.class, principal.getName());
+		log.log(Level.INFO, "user info for principal with name {0} is {1}", new Object[] { principal.getName(), user });
 		return Response.ok(user).build();
 	}
 }

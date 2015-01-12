@@ -63,4 +63,11 @@ public class User {
 		this.groups = groups;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [userid=").append(userid).append(", password=XXXXXXXXX").append(", groups=").append(groups).append("]");
+		return builder.toString();
+	}
+
 }
